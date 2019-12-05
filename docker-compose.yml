@@ -1,0 +1,9 @@
+version: '2'
+services:
+ app:
+  build:
+   context: ./docker/
+   dockerfile: ./app.docker
+  command: python3 /app/expsys.py
+  volumes:
+   - ./app/:/app/
