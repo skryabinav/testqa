@@ -13,6 +13,8 @@ class expsys:
         self.WARNING = '\033[93m'
         self.FAIL = '\033[91m'
         self.ENDC = '\033[0m'
+        self.log = "/app/report/expsys.log"
+        self.error_log = "/app/report/expsys_error.log"
         chrome_options = Options()
         chrome_options.add_argument('--window-size=1366x768')
         if not self.debug:
@@ -26,12 +28,18 @@ class expsys:
 
     def info(self,string):
         print(self.OKGREEN+string+self.ENDC)
+        with open(self.log, "a") as log:
+            log.write(string)
 
     def warning(self, string):
         print(self.WARNING + string + self.ENDC)
+        with open(self.log, "a") as log:
+            log.write(string)
 
     def error(self,string):
         print(self.FAIL + string + self.ENDC)
+        with open(self.error_log, "a") as log:
+            log.write(string)
         self.driver.quit()
         exit(111)
 
