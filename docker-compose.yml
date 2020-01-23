@@ -4,6 +4,10 @@ services:
   build:
    context: ./docker/
    dockerfile: ./app.docker
-  command: python3 /app/expsys.py
+  command: python3 /app/expsys.py -d
   volumes:
    - ./app/:/app/
+   - $HOME/.Xauthority:/root/.Xauthority
+  environment:
+         DISPLAY: $DISPLAY
+  network_mode: "host"
