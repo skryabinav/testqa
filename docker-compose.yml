@@ -1,6 +1,7 @@
 version: '2'
 services:
  apptest:
+  user: $UID:$UID
   build:
    context: ./docker/
    dockerfile: ./app.docker
@@ -13,6 +14,7 @@ services:
   network_mode: "host"
 
  appprod:
+  user: $UID:$UID
   build:
    context: ./docker/
    dockerfile: ./app.docker
