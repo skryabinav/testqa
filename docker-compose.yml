@@ -1,6 +1,6 @@
 version: '2'
 services:
- app:
+ apptest:
   build:
    context: ./docker/
    dockerfile: ./app.docker
@@ -11,3 +11,11 @@ services:
   environment:
          DISPLAY: $DISPLAY
   network_mode: "host"
+
+ appprod:
+  build:
+   context: ./docker/
+   dockerfile: ./app.docker
+  command: python3 /app/expsys.py 
+  volumes:
+   - ./app/:/app/
