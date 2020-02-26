@@ -69,7 +69,7 @@ class expsys:
 
         try:
             for i in self.driver.find_elements_by_tag_name("cite"):
-                if "https://habrahabr.ru" in i.text:
+                if "habrahabr.ru" in i.text:
                     habr = i.find_element_by_xpath('..').find_element_by_xpath('..')
         except Exception as inst:
             self.save_screenshot("error.png")
